@@ -10,53 +10,79 @@ Backend uses NestJS and TypeScript with PostgreSQL. Authentication uses email OT
 
 ## Quick start backend
 
-1. Open a terminal in the backend folder
-2. Run
-```
-npm install
-```
-3. Create an environment file by copying the example
-```
-cp .env.example .env
-```
-4. Set database values in .env. Email values are optional in development
-```
-DB_HOST=localhost
-DB_PORT=5432
-DB_USERNAME=postgres
-DB_PASSWORD=your_password
-DB_DATABASE=ecommerce_db
+### Prerequisites
 
-JWT_SECRET=dev-secret
-JWT_EXPIRATION=24h
+- Docker and Docker Compose installed on your system
 
-PORT=3001
-FRONTEND_URL=http://localhost:3000
-```
-5. Start the server
-```
-npm run start:dev
-```
+### Setup
+
+1. **Start PostgreSQL with Docker**
+
+   ```bash
+   docker-compose up -d postgres
+   ```
+
+   This will start PostgreSQL on port 5432. The database will persist data in a Docker volume.
+
+2. **Setup backend**
+
+   ```bash
+   cd backend
+   npm install
+   ```
+
+3. **Create environment file**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   The default values work with the Docker PostgreSQL setup. You can customize email settings if needed.
+
+4. **Run database migrations**
+
+   ```bash
+   npm run prisma:migrate
+   npm run prisma:generate
+   ```
+
+5. **Start the backend server**
+   ```bash
+   npm run start:dev
+   ```
+
+### Docker Commands
+
+- Start PostgreSQL: `docker-compose up -d postgres`
+- Stop PostgreSQL: `docker-compose down`
+- View PostgreSQL logs: `docker-compose logs postgres`
+- Connect to PostgreSQL: `docker-compose exec postgres psql -U postgres -d ecommerce_db`
 
 Notes
 
 1. Order confirmation email is sent after order creation. In development a preview URL is logged in the console
 2. OTP emails also go to an Ethereal preview in development
 
-## Quick start frontend 
+## Quick start frontend
 
-1. Open a terminal in the frontend  folder
+1. Open a terminal in the frontend folder
 2. Run
+
 ```
 npm install
 ```
+
 3. Create .env.local with the backend url
-```
+
+````
 NEXT_PUBLIC_API_URL=http://localhost:3001
-```
+```cp .env.example .env
+
 4. Start the app
-```
+````
+
 npm run dev
+
 ```
 5. Open http://localhost:3000
 
@@ -64,31 +90,42 @@ npm run dev
 
 Products are backed by Prisma in the backend. If you change the schema run
 ```
+
 npm run prisma:generate
+
 ```
 If you want Prisma to manage the database schema locally set DATABASE_URL in backend .env and run
 ```
+
 npm run prisma:migrate
+
 ```
 
 ## API summary
 
 Authentication
 ```
+
 POST /auth/send-otp
 POST /auth/verify-otp
+
 ```
 Products
 ```
+
 GET /products
 GET /products/:id
 GET /products?category=fruit
 GET /products/featured
+
 ```
 Orders
 ```
+
 POST /orders
 GET /orders/:id
+
 ```
 
 
+```
