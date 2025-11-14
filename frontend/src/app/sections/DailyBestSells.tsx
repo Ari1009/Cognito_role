@@ -12,15 +12,15 @@ function DailyBestSells() {
   }, [fetchProducts])
 
   return (
-    <div className="max-w-[1200px] mx-auto mt-10 px-6">
+    <div className="max-w-[1200px] mx-auto mt-10 px-4 sm:px-6">
 
       <h1 className="font-quicksand font-bold text-[23px] text-gray-800">
         Daily Best Sells
       </h1>
 
-      <div className="mt-8 flex gap-6 items-start">
+      <div className="mt-8 flex flex-col lg:flex-row gap-6 items-start">
        
-        <div className="relative w-60 h-85 shrink-0">
+        <div className="relative w-full sm:w-60 h-85 shrink-0">
           <img
             src="BestSell.png"
             alt="Best Sell Banner"

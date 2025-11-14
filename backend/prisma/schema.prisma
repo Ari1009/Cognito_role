@@ -11,7 +11,7 @@ generator client {
 }
 
 model User {
-  id         String   @id @default(uuid())
+  id         String   @id @default(uuid()) @db.Uuid
   email      String   @unique
   firstName  String?
   lastName   String?
@@ -23,10 +23,11 @@ model User {
 
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+  @@map("users")
 }
 
 model Product {
-  id            String   @id @default(uuid())
+  id            String   @id @default(uuid()) @db.Uuid
   name          String
   description   String
   price         Decimal  @db.Decimal(10, 2)
@@ -44,10 +45,11 @@ model Product {
 
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+  @@map("products")
 }
 
 model Order {
-  id             String   @id @default(uuid())
+  id             String   @id @default(uuid()) @db.Uuid
   userId         String?
   user           User?    @relation(fields: [userId], references: [id])
   items          OrderItem[]
@@ -71,10 +73,11 @@ model Order {
 
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+  @@map("orders")
 }
 
 model OrderItem {
-  id           String  @id @default(uuid())
+  id           String  @id @default(uuid()) @db.Uuid
   orderId      String
   order        Order   @relation(fields: [orderId], references: [id])
   productId    String
@@ -83,4 +86,5 @@ model OrderItem {
   price        Decimal @db.Decimal(10, 2)
   quantity     Int     @default(1)
   total        Decimal @db.Decimal(10, 2)
+  @@map("order_items")
 }

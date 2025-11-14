@@ -12,14 +12,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCartStore();
   return (
     <Link href={`/product/${product.id}`} className="block">
-      <div className="relative w-[215px] bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+      <div className="relative w-full bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
         
         <div className="absolute top-2 left-2 bg-[rgba(103,188,238,1)] text-white text-[10px] px-2 py-0.5 rounded-md">
           Sale
         </div>
 
        
-        <div className="w-full h-[150px] flex items-center justify-center bg-white p-3">
+        <div className="w-full h-40 sm:h-44 flex items-center justify-center bg-white p-3">
           <img
             src={product.image}
             alt={product.name}

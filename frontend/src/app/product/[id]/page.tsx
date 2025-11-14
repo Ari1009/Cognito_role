@@ -39,15 +39,15 @@ export default function ProductDetailsPage() {
 
   return (
     <>
-      <div className="bg-[rgba(245,62,50,1)] flex justify-between w-full px-8 py-4">
+      <div className="bg-[rgba(245,62,50,1)] flex justify-between w-full px-4 sm:px-6 lg:px-8 py-4">
         <p className="font-monrope text-white text-[13px] font-medium">Product</p>
         <p className="font-poppins text-white text-[10px] font-medium">Home - Product</p>
       </div>
 
       <div className="flex flex-col scrollbar-hide items-center box-sizing py-12 px-4 w-full ">
-        <div className="flex gap-6 max-w-[1200px] w-full px-30">
+        <div className="flex flex-col lg:flex-row gap-6 max-w-[1200px] w-full">
          
-          <div className="bg-[rgba(247,247,248,1)] p-4 font-poppins border border-[rgba(233,233,233,1)] w-52 h-100">
+          <div className="hidden lg:block bg-[rgba(247,247,248,1)] p-4 font-poppins border border-[rgba(233,233,233,1)] w-60">
             <p className="font-medium text-[11px] mb-3">Product Category</p>
             <hr className="border-[#d4d4d4] w-45 mx-auto" />
 
@@ -105,9 +105,9 @@ export default function ProductDetailsPage() {
           </div>
 
           <div className="flex flex-col gap-8 flex-1">
-            <div className="flex gap-4 ">
+            <div className="flex flex-col md:flex-row gap-4 ">
              
-              <div className="bg-[rgba(233,233,233,1)] h-96 rounded-sm w-80 flex items-center justify-center">
+              <div className="bg-[rgba(233,233,233,1)] w-full md:w-80 h-80 md:h-96 rounded-sm flex items-center justify-center">
                 <img
                   src={product?.image}
                   alt={product?.name}
@@ -238,13 +238,13 @@ export default function ProductDetailsPage() {
 
          
             <div>
-              <img src="/description.png" alt="" className="w-[700px] " />
+              <img src="/description.png" alt="" className="w-full max-w-[700px] mx-auto" />
             </div>
           </div>
         </div>
 
       
-        <div className="max-w-[1200px] w-[1000] mt-20">
+        <div className="max-w-[1200px] w-full mt-12 px-4">
           <img src="/Popular.png" alt="" className="w-full " />
         </div>
       </div>

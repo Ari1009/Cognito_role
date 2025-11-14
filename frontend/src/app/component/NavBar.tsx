@@ -21,10 +21,10 @@ export default function NavBar() {
 
 
   return (
-    <div className="w-full h-[142px] bg-white mb-[-10] ">
+    <div className="w-full bg-white">
       
      
-      <div className="h-[55px] w-full flex items-center justify-between px-55 max-w-[1920px] mx-auto border-b border-[#E9E9E9] shadow-[0px_4px_8px_rgba(51,51,51,0.15)]">
+      <div className="h-[55px] w-full flex items-center justify-between px-4 sm:px-6 lg:px-8 max-w-[1920px] mx-auto border-b border-[#E9E9E9] shadow-[0px_4px_8px_rgba(51,51,51,0.15)]">
         
         
         <div className="flex items-center gap-6 ">
@@ -34,7 +34,7 @@ export default function NavBar() {
           </svg>
             </div>
          
-          <div className="flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-6">
             <Link href="/" className="text-[13px] font-medium font-poppins">Home</Link>
             <span className="text-[13px] font-medium font-poppins inline-flex items-center gap-1">Category <ChevronDown className="w-4 h-4" /></span>
             <span className="text-[13px] font-medium font-poppins inline-flex items-center gap-1">Products <ChevronDown className="w-4 h-4" /></span>
@@ -52,7 +52,7 @@ export default function NavBar() {
       </div>
 
  
-      <div className="h-18 w-full max-w-[1920px] mx-auto flex items-center justify-between px-50  border-b-2 border-gray-100">
+      <div className="h-18 w-full max-w-[1920px] mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 border-b-2 border-gray-100">
       
         <div className="flex items-center">
   <img src="logo2.svg" alt="Logo" className="w-[49px] h-[49px] m-0 p-0" />
@@ -69,7 +69,7 @@ export default function NavBar() {
 
 
         
-        <div className="flex items-stretch w-[440px] h-8 bg-white border border-[rgba(100,180,150,1)] rounded-sm overflow-hidden">
+        <div className="hidden sm:flex items-stretch flex-1 max-w-md h-8 bg-white border border-[rgba(100,180,150,1)] rounded-sm overflow-hidden mx-4">
           
                 <input
                   type="search"
@@ -111,25 +111,25 @@ export default function NavBar() {
 
 
                         
-                        <div className="flex items-center gap-6">
-                        <span className="text-[13px] font-medium font-poppins inline-flex items-center gap-1">
-                            <User size={16} /> Account
-                        </span>
-                        <span className="text-[13px] font-medium font-poppins inline-flex items-center gap-1">
-                            <Heart size={16} /> Wishlist
-                        </span>
-                        <span
-                            onClick={handleCartClick}
-                            className="relative text-[13px] font-medium font-poppins inline-flex items-center gap-1 cursor-pointer"
-                          >
-                            <ShoppingCart size={16} /> Cart
+                        <div className="flex items-center gap-4">
+                          <span className="text-[13px] font-medium font-poppins inline-flex items-center gap-1">
+                              <User size={16} /> Account
+                          </span>
+                          <span className="text-[13px] font-medium font-poppins inline-flex items-center gap-1">
+                              <Heart size={16} /> Wishlist
+                          </span>
+                          <span
+                              onClick={handleCartClick}
+                              className="relative text-[13px] font-medium font-poppins inline-flex items-center gap-1 cursor-pointer"
+                            >
+                              <ShoppingCart size={16} /> Cart
 
-                            {cartCount > 0 && (
-                              <span className="absolute -top-2 -right-3 bg-red-500 text-white text-[10px] font-bold w-[17px] h-[17px] flex items-center justify-center rounded-full">
-                                {cartCount}
-                              </span>
-                            )}
-                        </span>
+                              {cartCount > 0 && (
+                                <span className="absolute -top-2 -right-3 bg-red-500 text-white text-[10px] font-bold w-[17px] h-[17px] flex items-center justify-center rounded-full">
+                                  {cartCount}
+                                </span>
+                              )}
+                          </span>
                         </div>
                     </div>
     </div>

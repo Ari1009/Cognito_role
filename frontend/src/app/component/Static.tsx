@@ -3,13 +3,13 @@ import React from 'react'
 
 const Static: React.FC  =()=> {
   return (
-    <div className='bg-[rgba(240,240,240,1)] w-full h-150 flex items-center pl-20 relative overflow-hidden scrollbar-hide'>
+    <div className='bg-[rgba(240,240,240,1)] w-full flex items-center relative overflow-hidden scrollbar-hide px-4 sm:px-6 lg:px-10 py-10'>
 
-        <img src="b1.svg" alt="" className='h-90 absolute right-[-45] bottom-0 object-contain '/>
-        <img src="img2.svg" alt="" className='h-15 absolute left-120 top-0'/>
-        <img src="ing3.png" alt="" className='h-15 absolute left-140 bottom-10'/>
-        <img src="img4.png" alt="" className='h-7 absolute left-0 top-0'/>
-        <img src="img5.png" alt="" className=' h-15 absolute left-0 bottom-0'/>
+        <img src="b1.svg" alt="" className='hidden md:block h-90 absolute right-[-45] bottom-0 object-contain'/>
+        <img src="img2.svg" alt="" className='hidden md:block h-15 absolute left-120 top-0'/>
+        <img src="ing3.png" alt="" className='hidden md:block h-15 absolute left-140 bottom-10'/>
+        <img src="img4.png" alt="" className='hidden md:block h-7 absolute left-0 top-0'/>
+        <img src="img5.png" alt="" className='hidden md:block h-15 absolute left-0 bottom-0'/>
       <div className='flex flex-col gap-3'>
         <p className='font-bold '><span className='text-red-500 underline'>100%</span> Organic Vegetable </p>
         <div>
@@ -21,7 +21,7 @@ const Static: React.FC  =()=> {
         <p className='text-[rgba(122,122,122,1)] text-[10px]'>reiciendis beatae consequuntur.</p>
         </div>
 
-        <div className='w-80 h-12 flex justify-between items-center pl-1 mt-5   bg-white border-0 rounded-full'>
+        <div className='w-full sm:w-80 h-12 flex justify-between items-center pl-1 mt-5 bg-white border-0 rounded-full'>
             <div className='flex gap-2'>
                 <Send size='15' color='rgba(131, 131, 131, 1)'/>
             <p className='text-[rgba(131,131,131,1)] text-xs '>Your emaill address</p>
@@ -34,3 +34,4 @@ const Static: React.FC  =()=> {
 }
 
 export default Static
+

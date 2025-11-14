@@ -1,4 +1,6 @@
 import { Module } from '@nestjs/common';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
@@ -11,6 +13,11 @@ import { EmailModule } from './email/email.module';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
+    }),
+    // Serve static images so product.image like "/images/p1.png" works
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public', 'images'),
+      serveRoot: '/images',
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],

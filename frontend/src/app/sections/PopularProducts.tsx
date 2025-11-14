@@ -12,7 +12,7 @@ function PopularProducts() {
   }, [fetchProducts]);
 
   return (
-    <div className="max-w-[1160px] mx-auto mt-12 ">
+    <div className="max-w-[1160px] mx-auto mt-12 px-4 sm:px-6">
      
       <ProductBar />
 
@@ -21,7 +21,7 @@ function PopularProducts() {
       {error && <p className="mt-6 text-sm text-red-500">Error: {error}</p>}
 
       
-      <div className="grid grid-cols-5 gap-6 mt-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-8">
         {products.map((p: Product) =>
           !p.bestSell && !p.dayDeal ? (
             <ProductCard key={p.id} product={p} />

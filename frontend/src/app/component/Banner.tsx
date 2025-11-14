@@ -2,9 +2,10 @@ import React from 'react'
 
 const Banner: React.FC = () => {
   return (
-    <div className="flex pt-10 w-full gap-5 justify-center">
-      {/* Banner 1 */}
-      <div className="relative w-[380px] h-[225px]">
+    <div className="w-full pt-10 px-4 sm:px-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[1200px] mx-auto">
+        {/* Banner 1 */}
+        <div className="relative w-full h-[225px]">
         <img
           src="banner-1.png"
           alt=""
@@ -22,10 +23,10 @@ const Banner: React.FC = () => {
             Shop Now
           </button>
         </div>
-      </div>
+        </div>
 
-      {/* Banner 2 */}
-      <div className="relative w-[380px] h-[225px]">
+        {/* Banner 2 */}
+        <div className="relative w-full h-[225px]">
         <img
           src="banner-2.png"
           alt=""
@@ -41,10 +42,10 @@ const Banner: React.FC = () => {
             Shop Now
           </button>
         </div>
-      </div>
+        </div>
 
-      {/* Banner 3 */}
-      <div className="relative w-[380px] h-[225px]">
+        {/* Banner 3 */}
+        <div className="relative w-full h-[225px]">
         <img
           src="banner-3.png"
           alt=""
@@ -60,9 +61,11 @@ const Banner: React.FC = () => {
             Shop Now
           </button>
         </div>
+        </div>
       </div>
     </div>
   )
 }
 
 export default Banner
+

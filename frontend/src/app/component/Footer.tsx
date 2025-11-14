@@ -1,14 +1,14 @@
-
 import React from 'react'
 
 function Footer() {
   return (
-    <div className='bg-[#f7f7f7] h-80 mt-10 p-30 flex relative justify-center items-center '>
-      <div className='w-220 pt-15'>
-        <img src="/footer.png" alt="" />
+    <div className='bg-[#f7f7f7] mt-10 py-8 sm:py-10 px-4 sm:px-6 lg:px-10 flex relative justify-center items-center overflow-hidden'>
+      <div className='w-full max-w-[900px]'>
+        <img src="/footer.png" alt="Footer" className='w-full h-auto' />
       </div>
-      <div className='absolute w-10 top-35 left-[-2]'><img src="/icon1.png" alt="" /></div>
-      <div className='absolute w-10 right-5 top-[-15]'><img src="/icon2.png" alt="" /></div>
+      {/* Decorative icons – hidden on very small screens to avoid overlap */}
+      <div className='hidden sm:block absolute w-10 sm:w-12 top-4 left-2'><img src="/icon1.png" alt="Decorative icon" /></div>
+      <div className='hidden sm:block absolute w-10 sm:w-12 right-4 top-0'><img src="/icon2.png" alt="Decorative icon" /></div>
     </div>
   )
 }

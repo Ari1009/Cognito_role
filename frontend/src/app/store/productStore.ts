@@ -33,6 +33,8 @@ export const useProductStore = create<ProductStore>((set) => ({
     try {
       set({ loading: true });
       const res = await axiosInstance.get("/products");
+      const base = (axiosInstance.defaults.baseURL || "").replace(/\/$/, "");
+      const toImg = (img: string) => (img?.startsWith("http") ? img : `${base}${img}`);
       const mapped = (res.data || []).map((p: any) => ({
         id: p.id,
         brand: p.brand ?? "",
@@ -40,7 +42,7 @@ export const useProductStore = create<ProductStore>((set) => ({
         type: p.category ?? "",
         name: p.name,
         price: Number(p.price),
-        image: p.image,
+        image: toImg(p.image),
         bestSell: Boolean(p.isFeatured) || p?.badge === "best",
         dayDeal: Boolean(p.isFeatured) || p?.badge === "sale",
       })) as Product[];
@@ -59,6 +61,8 @@ export const useProductStore = create<ProductStore>((set) => ({
       set({ loading: true });
       const res = await axiosInstance.get(`/products/${id}`);
       const p = res.data;
+      const base = (axiosInstance.defaults.baseURL || "").replace(/\/$/, "");
+      const toImg = (img: string) => (img?.startsWith("http") ? img : `${base}${img}`);
       const mapped: Product = {
         id: p.id,
         brand: p.brand ?? "",
@@ -66,7 +70,7 @@ export const useProductStore = create<ProductStore>((set) => ({
         type: p.category ?? "",
         name: p.name,
         price: Number(p.price),
-        image: p.image,
+        image: toImg(p.image),
         bestSell: Boolean(p.isFeatured) || p?.badge === "best",
         dayDeal: Boolean(p.isFeatured) || p?.badge === "sale",
       };

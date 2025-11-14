@@ -22,7 +22,10 @@ interface Order {
 interface OrderStore {
   loading: boolean;
   error: string | null;
-  createOrder: (orderData: Omit<Order, "items" | "total"> & { deliveryCharge?: number }) => Promise<void>;
+  createOrder: (
+    orderData: Omit<Order, "items" | "total"> & { deliveryCharge?: number; shippingMethod?: string },
+    opts?: { showToast?: boolean }
+  ) => Promise<string | null>; // returns orderId on success
 }
 
 export const useOrderStore = create<OrderStore>((set, get) => ({
@@ -30,13 +33,13 @@ export const useOrderStore = create<OrderStore>((set, get) => ({
   error: null,
 
 
-  createOrder: async (orderData) => {
+  createOrder: async (orderData, opts) => {
     const { cart, total, clearCart } = useCartStore.getState();
     const { email, verified } = useEmailStore.getState();
 
     if (!verified || !email) {
       toast.error("Please verify your email before placing the order.");
-      return;
+      return null;
     }
 
     set({ loading: true, error: null });
@@ -67,18 +70,25 @@ export const useOrderStore = create<OrderStore>((set, get) => ({
         country: orderData.country,
         regionState: orderData.regionState,
         paymentMethod: orderData.paymentMethod,
+        shippingMethod: orderData.shippingMethod,
       };
 
-      await axiosInstance.post("/orders", payload);
-
+      const res = await axiosInstance.post("/orders", payload);
+      const orderId = res?.data?.id ?? res?.data?.order?.id ?? null;
       clearCart();
-      toast.success("Order Successful");
       set({ loading: false });
+      if (orderId && (opts?.showToast ?? true)) {
+        toast.success(`Order placed successfully #${orderId.slice(0, 8)}...`, {
+          style: { background: "#10B981", color: "white", fontSize: "14px" },
+        });
+      }
+      return orderId;
     } catch (error: any) {
       set({
         loading: false,
         error: error.response?.data?.message || "Failed to place order",
       });
+      return null;
     }
   },
 }));
